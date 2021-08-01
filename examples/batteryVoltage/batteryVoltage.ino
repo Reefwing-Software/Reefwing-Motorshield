@@ -13,7 +13,7 @@
 
 #include <NexgenMotorShield>
 
-NexgenMotorShield motorShield();
+NexgenMotorShield() motorShield;
 
 void setup() {
     //  Set voltage divider resistor values if not default (in ohms)
