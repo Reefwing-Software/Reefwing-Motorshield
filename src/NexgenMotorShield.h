@@ -46,12 +46,16 @@
 
 class DCMotor {
     public:
-        DCMotor(uint8_t channel);
+        DCMotor(uint8_t);
 
-        void enable();
-        void disable();
-        void setConfiguration(uint8_t config);
-        void setSpeed(uint8_t speed);
+        void enable(void);
+        void disable(void);
+        void setConfiguration(uint8_t);
+        void setSpeed(uint8_t);
+        uint8_t getChannel(void);
+        uint8_t getEnablePin(void);
+        uint8_t getInput1Pin(void);
+        uint8_t getInput2Pin(void);
 
     private:
         uint8_t _enablePin, _input1Pin, _input2Pin;
@@ -60,18 +64,21 @@ class DCMotor {
 
 class NexgenMotorShield {
     public:
-        NexgenMotorShield();
+        NexgenMotorShield(void);
 
         DCMotor motor1, motor2;
 
-        void setR1(uint8_t r1);
-        void setR2(uint8_t r2);
-        float readADCValue();
-        float readDividerRatio();
-        float readBatteryVoltage();
+        void setR1(uint16_t);
+        void setR2(uint16_t);
+        uint16_t getR1(void);
+        uint16_t getR2(void);
+        float readADCValue(void);
+        float readDividerRatio(void);
+        float readBatteryVoltage(void);
 
     private:
-      uint8_t _r1, _r2;
+      uint16_t _r1 = R1; 
+      uint16_t _r2 = R2;
 };
 
 #endif

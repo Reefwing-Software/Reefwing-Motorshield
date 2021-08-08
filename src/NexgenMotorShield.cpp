@@ -36,19 +36,19 @@ DCMotor::DCMotor(uint8_t channel) {
     _input2Pin = M2_INPUT2;
   }
   else {
-    #error DCMotor exception - channel has to be 1 or 2.
+    //  #error DCMotor exception - channel has to be 1 or 2.
   }
 }
 
-DCMotor::enable() {
+void DCMotor::enable(void) {
   digitalWrite(_enablePin, HIGH);
 }
 
-DCMotor::disable() {
+void DCMotor::disable(void) {
   digitalWrite(_enablePin, LOW);
 }
 
-DCMotor::setConfiguration(uint8_t config) {
+void DCMotor::setConfiguration(uint8_t config) {
   switch(config) {
     case FORWARD:
       digitalWrite(_input1Pin, HIGH);
@@ -69,55 +69,75 @@ DCMotor::setConfiguration(uint8_t config) {
       disable();
       break;
     default:
-      #error DCMotor exception - Invalid configuration option.
+      //  #error DCMotor exception - Invalid configuration option.
       break;
   }
 }
 
-DCMotor::setSpeed(uint8_t speed) {
+void DCMotor::setSpeed(uint8_t speed) {
   if (speed >= 0 && speed < 256) {
-    analogWrite(_enable, speed);
+    analogWrite(_enablePin, speed);
   }
   else {
-    #error DCMotor exception - Speed not within valid range (0-255).
+    //  #error DCMotor exception - Speed not within valid range (0-255).
   }
 }
 
-NexgenMotorShield::NexgenMotorShield {
-  //  Voltage divider resistor defaults
-  _r1 = R1;
-  _r2 = R2;
+uint8_t DCMotor::getChannel(void) {
+  return _channel;
+}
 
+uint8_t DCMotor::getEnablePin(void) {
+  return _enablePin;
+}
+
+uint8_t DCMotor::getInput1Pin(void) {
+  return _input1Pin;
+}
+
+uint8_t DCMotor::getInput2Pin(void) {
+  return _input2Pin;
+}
+
+DCMotor getMotor(uint8_t channel) {
+  return DCMotor(channel);
+}
+
+NexgenMotorShield::NexgenMotorShield(void): motor1{ getMotor(1) }, motor2{ getMotor(2) } {
   //  Pin Configuration
   pinMode(VBAT, INPUT);
-
-  //  Initialise Motors
-  motor1 = DCMotor(1);
-  motor2 = DCMotor(2);
 
   //  Disable Motors on start
   motor1.disable();
   motor2.disable();
 }
 
-NexgenMotorShield::setR1(uint8_t r1) {
+void NexgenMotorShield::setR1(uint16_t r1) {
   _r1 = r1;
 }
 
-NexgenMotorShield::setR2(uint8_t r2) {
+void NexgenMotorShield::setR2(uint16_t r2) {
   _r2 = r2;
 }
 
-NexgenMotorShield::readDividerRatio() {
+uint16_t NexgenMotorShield::getR1(void) {
+  return _r1;
+}
+        
+uint16_t NexgenMotorShield::getR2(void) {
+  return _r2;
+}
+
+float NexgenMotorShield::readDividerRatio(void) {
   return (float)(_r1 + _r2) / (float)_r2;
 }
 
-NexgenMotorShield::readADCValue() {
+float NexgenMotorShield::readADCValue(void) {
   //  ADC Hardware rounds down
   return (float)analogRead(VBAT) + 0.5;
 }
 
-NexgenMotorShield::readBatteryVoltage() {
+float NexgenMotorShield::readBatteryVoltage(void) {
   float adcValue = readADCValue(); 
 
   return (adcValue / 1024.0) * 5.0 * readDividerRatio();

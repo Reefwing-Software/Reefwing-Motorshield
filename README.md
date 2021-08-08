@@ -57,7 +57,7 @@ The quickest way to learn how to use this library is to look at the examples. As
 A motor shield object can be instantiated using the provided constructor:
 
 ```
-NexgenMotorShield() motorShield;
+NexgenMotorShield motorShield;
 ```
 
 You can then control the two motors using the **setConfiguration()** and **setSpeed** methods. For example, for motor 1:

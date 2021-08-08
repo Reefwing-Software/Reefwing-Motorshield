@@ -11,9 +11,9 @@
 
 ******************************************************************/
 
-#include <NexgenMotorShield>
+#include <NexgenMotorShield.h>
 
-NexgenMotorShield() motorShield;
+NexgenMotorShield motorShield;
 
 void setup() {
     // put your setup code here, to run once:

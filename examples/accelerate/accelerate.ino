@@ -11,23 +11,33 @@
 
 ******************************************************************/
 
-#include <NexgenMotorShield>
+#include <NexgenMotorShield.h>
 
-NexgenMotorShield() motorShield;
+NexgenMotorShield motorShield;
 
 void setup() {
-    // put your setup code here, to run once:
-
+    // DEBUG
+    Serial.begin(115200);
+    Serial.print("Motor 1 : Channel - ");
+    Serial.print(motorShield.motor1.getChannel());
+    Serial.print(", Enable Pin - ");
+    Serial.print(motorShield.motor1.getEnablePin());
+    Serial.print(", Input 1 Pin - ");
+    Serial.print(motorShield.motor1.getInput1Pin());
+    Serial.print(", Input 2 Pin - ");
+    Serial.println(motorShield.motor1.getInput2Pin());
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
+    // Accelerate in FORWARD direction
     accelerate();
     coast();
-    delay(500);
+    delay(1000);
+
+    // Decelerate in REVERSE direction
     decelerate();
     coast();
-    delay(500);
+    delay(1000);
 }
 
 void accelerate() {
@@ -51,6 +61,6 @@ void decelerate() {
 }
 
 void coast() {
-    motorShield.motor1.setConfiguration(FORWARD);
-    motorShield.motor2.setConfiguration(FORWARD);
+    motorShield.motor1.setConfiguration(COAST);
+    motorShield.motor2.setConfiguration(COAST);
 }
