@@ -74,8 +74,11 @@ The **setConfiguration()** method has four available options:
 2. REVERSE
 3. BRAKE
 4. COAST
+5. DISCONNECT
 
-These are defined terms in the library. You will generally set the configuration before you set the speed. The speed can be set between 0 (stopped) and 255 (fastest). As soon as you set the speed the motor will start running, unless the configuration state is BRAKE or COAST.
+When a new motor shield object is instantiated, the two motors are set to the DISCONNECT state. This disables the motor and sets both input pins low.
+
+The 5 configuration options are defined terms in the library. You will generally set the configuration before you set the speed. The speed can be set between 0 (stopped) and 255 (fastest). As soon as you set the speed the motor will start running, unless the configuration state is BRAKE or COAST.
 
 The alternative to setting the speed is to use **enable()** and **disable()**. For example for motor 2:
 

@@ -4,10 +4,11 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.0
-  Date:        27/07/21
+  Version:     1.1
+  Date:        10/08/21
 
   1.0 Original Release          27/07/21
+  1.1 Updated Examples          10/08/21
 
 ******************************************************************/
 
@@ -31,10 +32,11 @@
    DCMotor Configuration Options
  ******************************************************************/
 
-#define FORWARD   1
-#define REVERSE   2
-#define BRAKE     3
-#define COAST     4
+#define FORWARD     1
+#define REVERSE     2
+#define BRAKE       3
+#define COAST       4
+#define DISCONNECT  5
 
 /******************************************************************
    Battery Voltage ADC DEFINES

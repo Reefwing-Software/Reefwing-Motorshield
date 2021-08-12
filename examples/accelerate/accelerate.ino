@@ -4,10 +4,11 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.0
-  Date:        01/08/21
+  Version:     1.1
+  Date:        10/08/21
 
-  1.0 Original Release          01/08/21
+  1.0 Original Release          27/07/21
+  1.1 Updated Examples          10/08/21
 
 ******************************************************************/
 
@@ -32,12 +33,12 @@ void loop() {
     // Accelerate in FORWARD direction
     accelerate();
     coast();
-    delay(1000);
+    delay(2000);
 
     // Decelerate in REVERSE direction
     decelerate();
     coast();
-    delay(1000);
+    delay(2000);
 }
 
 void accelerate() {

@@ -4,10 +4,11 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.0
-  Date:        27/07/21
+  Version:     1.1
+  Date:        10/08/21
 
   1.0 Original Release          27/07/21
+  1.1 Updated Examples          10/08/21
 
 ******************************************************************/
 
@@ -68,6 +69,11 @@ void DCMotor::setConfiguration(uint8_t config) {
     case COAST:
       disable();
       break;
+    case DISCONNECT:
+      disable();
+      digitalWrite(_input1Pin, LOW);
+      digitalWrite(_input2Pin, LOW);
+      break;
     default:
       //  #error DCMotor exception - Invalid configuration option.
       break;
@@ -107,9 +113,9 @@ NexgenMotorShield::NexgenMotorShield(void): motor1{ getMotor(1) }, motor2{ getMo
   //  Pin Configuration
   pinMode(VBAT, INPUT);
 
-  //  Disable Motors on start
-  motor1.disable();
-  motor2.disable();
+  //  Disable & Disconnect Motors on start
+  motor1.setConfiguration(DISCONNECT);
+  motor2.setConfiguration(DISCONNECT);
 }
 
 void NexgenMotorShield::setR1(uint16_t r1) {
