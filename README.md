@@ -1,28 +1,35 @@
 # Nexgen Motor Shield Library #
 
-The Nexgen Rover is an Arduino based robot designed wholly by Nexgen Codecamp Pty Ltd. It is used in technology related STEM courses aimed at high schools. The robot is based on Arduino technology and runs an Arduino UNO with a motor controller shield
+The Nexgen Rover is an Arduino based robot designed wholly by Nexgen Codecamp Pty Ltd. It is used in technology related STEM courses aimed at high schools. The robot is based on Arduino technology and runs an Arduino UNO or Arduino Nano 33 IoT with a motor controller shield/carrier board.
+
+The shield for the UNO and the carrier board for the Nano 33 IoT have a similar design but different headers to match the boards.
 
 This library makes using the Nexgen Motor Shield simple.
 
-### Motor Shield Capabilities ###
+### 1.0 Motor Shield Capabilities ###
 
-The Nexgen Motor Shield utilises the L293B H-bridge and has been designed with the following capability:
+Both the Nexgen Motor Shield and Carrier Boards utilise the L293B H-bridge and have been designed with the following capabilities:
 * Ability to control two bidirectional DC motors for direction and rotation speed.
-* A 2 pin JST-RCY connection for a LiPo battery to power the shield and attached Arduino UNO.
-* LED power indication for VCC and the 5V regulated supply. The 5VDC regulator on the UNO is used.
+* An XT-60 connection for the LiPo battery to power the shield and attached Arduino board.
+* Reverse polarity protection for the battery connection.
+* LED power indication for VCC (i.e., LiPo voltage) and the 5V regulated supply. A separate 5VDC regulator is provided on the shield/carrier board. The 5VDC regulator on the UNO and Nano is not used. Note that the 5VDC regulator output on the Nano 33 IoT is normally not connected to the header pin (unless you bridge the pads on the board). The Nano carrier board also provides power indication for the 3V3 bus. This comes from the 3V3DC regulator on the Nano 33 IoT.
 * Voltage monitoring to prevent excessive discharge of the LiPo (needs to be programmed).
-* The UNO reset switch reproduced on the shield.
+* The UNO/Nano reset switch reproduced on the shield.
 * Bulk decoupling to reduce low frequency ripple and bypass capacitors to reduce high frequency noise.
-* Additional pin headers for GND and 5VDC.
+* Additional pin headers for GND, 5VDC and 3V3DC (on the Nano Carrier Board).
 * Two additional, Signal, 5V and GND headers for use with servo motors or similar.
 
 The L293B chip allows us to control two bidirectional motors with a stall current of up to 2A. It expects an RMS current of 1A. In the L293, motor direction is controlled by the state of two input pins and speed is controlled by applying a PWM signal to the enable pin. This library abstracts that detail away.
 
-To monitor the battery we use a simple voltage divider and the ADC (Analog to Digital Converter) on the UNO. We need the resistive divider because you can't apply more than 5V to an Analog Input on the UNO. You can read more about the details of battery monitoring in our article [Designing your own Arduino Motor Shield](https://medium.com/r/?url=https%3A%2F%2Freefwing.medium.com%2Fdesigning-your-own-arduino-uno-motor-shield-ca507ab61f4b).
+To monitor the battery we use a simple voltage divider and the ADC (Analog to Digital Converter) on the Arduino boards. We need a resistive divider because you can't apply more than 5V to an Analog Input on the UNO or 3V3 to the Nano 33 IoT. You can read more about the details of battery monitoring in our article [Designing your own Arduino Motor Shield](https://medium.com/r/?url=https%3A%2F%2Freefwing.medium.com%2Fdesigning-your-own-arduino-uno-motor-shield-ca507ab61f4b).
 
-### Motor Shield Pin Connections ###
+The Nano 33 IoT carrier board also comes with an on/off switch, which disconnects power from the LiPo battery and a passive piezo electric buzzer. 
 
-The control pins for Motor 1 (M1) and the pin connections for the UNO (in bold) on our shield are:
+### 2.0 Motor Shield Pin Connections ###
+
+**2.1 Arduino UNO R3**
+
+The control pins for Motor 1 (M1) and the pin connections for the UNO (in **bold**) on our shield are:
 
 * **D3**  -  Chip Enable M1
 * **D2**  -  M1 Input 1 
@@ -44,7 +51,43 @@ In addition, we have the following pins connected:
 * **D10**  -  Servo 2 (optional Servo Controls or general purpose digital output)
 * **A0** -  Voltage Divider output from battery
 
-In total the Nexgen Motor Shield uses **8** Digital Inputs and **1** Analogue Input. The remaining pins are free and available via the stackable header. 
+In total the Nexgen UNO Motor Shield uses **8** Digital Inputs and **1** Analogue Input. The remaining pins are free and available via the stackable header. 
+
+Additional 5V DC and GND header pins are also provided for use with sensors, etc.
+
+**2.2 Arduino Nano 33 IoT**
+
+The control pins for Motor 1 (M1) and the pin connections for the Nano 33 IoT (in **bold**) on our carrier board are:
+
+* **D2**  -  Chip Enable M1
+* **D3**  -  M1 Input 1 
+* **D4**  -  M1 Input 2 
+* M1 Output 1 (to one terminal of M1)
+* M1 Output 2 (to the other terminal of M1)
+
+Similarly for Motor 2 (M2):
+
+* **D5**  -  Chip Enable M2
+* **D6**   -  M2 Input 3
+* **D7**   -  M2 Input 4
+* M2 Output 3 (to M2 terminals)
+* M2 Output 4 (to M2 terminals)
+
+In addition, we have the following pins connected to headers:
+
+* **D9**   -  Servo 1 (optional Servo Controls or general purpose digital output)
+* **D10**  -  Servo 2 (optional Servo Controls or general purpose digital output)
+* **D11** - SPI MOSI (not used by carrier board)
+* **D12** - SPI MISO (not used by carrier board)
+* **D13** - SPI SCK (not used by carrier board)
+* **A0** -  Voltage Divider output from battery
+* **A2** - Connected to the passive piezo buzzer circuit
+* **A4** - I2C SDA (not used by carrier board)
+* **A5** - I2C SCL (not used by carrier board)
+
+In total the Nexgen Nano 33 IoT carrier board uses **8** Digital Inputs and **2** Analogue Inputs. The remaining pins are free and available via the stackable header or additional board headers (e.g., the I2C and SPI bus pins). 
+
+Additional 5V DC, 3V3 DC and GND header pins are also provided for use with sensors, etc.
 
 ### How to Use the Library ###
 

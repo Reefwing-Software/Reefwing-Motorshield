@@ -4,11 +4,12 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.1
-  Date:        10/08/21
+  Version:     2.0
+  Date:        08/12/21
 
   1.0 Original Release          27/07/21
   1.1 Updated Examples          10/08/21
+  2.0 Added Nano 33 IoT support 08/12/21
 
 ******************************************************************/
 
@@ -16,20 +17,11 @@
 #define NexgenMotorShield_h
 
 #include "Arduino.h"
-
-#define M1_ENABLE 3
-#define M1_INPUT1 2
-#define M1_INPUT2 4
-
-#define M2_ENABLE 11
-#define M2_INPUT1 7
-#define M2_INPUT2 8
-
-#define SERVO1    9
-#define SERVO2    10
+#include "target.h"
 
 /******************************************************************
-   DCMotor Configuration Options
+ *  DCMotor Configuration Options
+ * 
  ******************************************************************/
 
 #define FORWARD     1
@@ -39,12 +31,9 @@
 #define DISCONNECT  5
 
 /******************************************************************
-   Battery Voltage ADC DEFINES
+ *  DCMotor Class
+ * 
  ******************************************************************/
-
-#define R1        10000 // 10K
-#define R2        6800  // 6K8
-#define VBAT      14    // Analogue Pin A0
 
 class DCMotor {
     public:
@@ -63,6 +52,11 @@ class DCMotor {
         uint8_t _enablePin, _input1Pin, _input2Pin;
         uint8_t _channel;
 };
+
+/******************************************************************
+ *  NexgenMotorShield Class
+ * 
+ ******************************************************************/
 
 class NexgenMotorShield {
     public:

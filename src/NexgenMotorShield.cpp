@@ -4,11 +4,12 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.1
-  Date:        10/08/21
+  Version:     2.0
+  Date:        08/12/21
 
   1.0 Original Release          27/07/21
   1.1 Updated Examples          10/08/21
+  2.0 Added Nano 33 IoT support 08/12/21
 
 ******************************************************************/
 
@@ -146,5 +147,5 @@ float NexgenMotorShield::readADCValue(void) {
 float NexgenMotorShield::readBatteryVoltage(void) {
   float adcValue = readADCValue(); 
 
-  return (adcValue / 1024.0) * 5.0 * readDividerRatio();
+  return (adcValue / 1024.0) * VLOGIC * readDividerRatio();
 }
