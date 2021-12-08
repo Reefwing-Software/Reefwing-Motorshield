@@ -13,12 +13,12 @@
 #elif defined(ARDUINO_ARCH_SAMD)
   #include "nano33iot.h"
 #else
-  #error "Unsupported Flight Controller Hardware"
+  #error "Unsupported Hardware"
 #endif  // target detection
   
 String boardName() {
   #if defined(ARDUINO_AVR_UNO)
-    return "Arduino UNO";
+    return "Arduino UNO R3";
   #elif defined(ARDUINO_SAMD_NANO_33_IOT)
     return "Arduino Nano 33 IoT";
   #else
