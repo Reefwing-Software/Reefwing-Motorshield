@@ -16,7 +16,7 @@
   #error "Unsupported Hardware"
 #endif  // target detection
   
-String boardName() {
+String boardType() {
   #if defined(ARDUINO_AVR_UNO)
     return "Arduino UNO R3";
   #elif defined(ARDUINO_SAMD_NANO_33_IOT)
