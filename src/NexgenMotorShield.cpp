@@ -149,13 +149,3 @@ float NexgenMotorShield::readBatteryVoltage(void) {
 
   return (adcValue / 1024.0) * VLOGIC * readDividerRatio();
 }
-
-String NexgenMotorShield::boardName() {
-  #if defined(ARDUINO_AVR_UNO)
-    return "Arduino UNO R3";
-  #elif defined(ARDUINO_SAMD_NANO_33_IOT)
-    return "Arduino Nano 33 IoT";
-  #else
-    return "Board Unsupported.";
-  #endif  // target detection
-}
