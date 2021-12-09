@@ -113,6 +113,7 @@ DCMotor getMotor(uint8_t channel) {
 NexgenMotorShield::NexgenMotorShield(void): motor1{ getMotor(1) }, motor2{ getMotor(2) } {
   //  Pin Configuration
   pinMode(VBAT, INPUT);
+  if (BOARD_NAME  == NANO_33_IOT) pinMode(BUZZER, OUTPUT)
 
   //  Disable & Disconnect Motors on start
   motor1.setConfiguration(DISCONNECT);

@@ -29,4 +29,4 @@
  * 
  ******************************************************************/
 
-#define BOARD_NAME  "Arduino UNO R3"
+#define BOARD_NAME  UNO

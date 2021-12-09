@@ -30,4 +30,4 @@
  * 
  ******************************************************************/
 
-#define BOARD_NAME  "Arduino Nano 33 IoT"
+#define BOARD_NAME  NANO_33_IOT

@@ -1,6 +1,6 @@
 /******************************************************************
   @file    withoutLibrary.ino
-  @brief   Using the Nexgen Motor Shield without Library
+  @brief   Using the UNO Nexgen Motor Shield without the Library
   @author  David Such
 
   Code:        David Such
