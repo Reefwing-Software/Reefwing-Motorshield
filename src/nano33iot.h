@@ -24,3 +24,10 @@
 #define R2        3300  //  3K3
 #define VBAT      14    //  Analogue Pin A0
 #define VLOGIC    3.3   //  Nano 33 IoT has 3V3 logic
+
+/******************************************************************
+ *  Board ID
+ * 
+ ******************************************************************/
+
+#define BOARD_NAME  "Arduino Nano 33 IoT"

@@ -23,3 +23,10 @@
 #define R2        6800  //  6K8
 #define VBAT      14    //  Analogue Pin A0
 #define VLOGIC    5.0   //  UNO has 5V logic
+
+/******************************************************************
+ *  Board ID
+ * 
+ ******************************************************************/
+
+#define BOARD_NAME  "Arduino UNO R3"

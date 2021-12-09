@@ -71,6 +71,7 @@ class NexgenMotorShield {
         float readADCValue(void);
         float readDividerRatio(void);
         float readBatteryVoltage(void);
+        String NexgenMotorShield::boardName()
 
     private:
       uint16_t _r1 = R1; 
