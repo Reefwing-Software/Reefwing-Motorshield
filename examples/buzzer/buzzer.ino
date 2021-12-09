@@ -39,15 +39,17 @@ void playNotes(const int notes[], const int noteDurations[], const int noteNumbe
     int noteDuration = 1000 / noteDurations[note];
     int space = noteDuration * 1.30;
 
+    digitalWrite(LED_BUILTIN, HIGH);
     tone(BUZZER, notes[note], noteDuration);
     delay(space);
+    digitalWrite(LED_BUILTIN, LOW);
     noTone(BUZZER);
   }
 }
 
 void setup() {
-    // put your setup code here, to run once:
-
+    // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
