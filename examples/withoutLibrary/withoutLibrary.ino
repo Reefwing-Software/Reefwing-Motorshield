@@ -4,11 +4,17 @@
   @author  David Such
 
   Code:        David Such
-  Version:     1.1
+  Version:     2.0
   Date:        10/08/21
 
   1.0 Original Release          27/07/21
   1.1 Updated Examples          10/08/21
+  2.0 Added Nano comments       08/12/21
+
+  Note:   The pin and other definitions are for the UNO shield,
+          you will need to manually change these if you are using
+          the Nano 33 IoT Carrier Board. Look in nano33iot.h for the
+          correct definitions for this board.
 
 ******************************************************************/
 
@@ -30,6 +36,9 @@
 #define R1        10000 // 10K
 #define R2        6800  // 6K8
 #define VBAT      14    // Analogue Pin A0
+#define VLOGIC    5.0   //  UNO has 5V logic
+
+#define BOARD_NAME  UNO
 
 float batteryVoltage = 0.0;
 const float dividerRatio = (float)(R1 + R2) / (float)R2;
@@ -63,7 +72,7 @@ void setup() {
 void loop() {
   float adcValue = (float)analogRead(VBAT) + 0.5; //  ADC Hardware rounds down
 
-  batteryVoltage = (adcValue / 1024.0) * 5.0 * dividerRatio;
+  batteryVoltage = (adcValue / 1024.0) * VLOGIC * dividerRatio;
   directionTest();
   speedTest();
 

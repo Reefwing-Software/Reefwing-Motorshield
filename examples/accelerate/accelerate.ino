@@ -19,6 +19,9 @@ NexgenMotorShield motorShield;
 void setup() {
     // DEBUG
     Serial.begin(115200);
+
+    //  For the Nano 33 IoT uncomment the next line
+    //  while (!Serial);    
     Serial.print("Motor 1 : Channel - ");
     Serial.print(motorShield.motor1.getChannel());
     Serial.print(", Enable Pin - ");

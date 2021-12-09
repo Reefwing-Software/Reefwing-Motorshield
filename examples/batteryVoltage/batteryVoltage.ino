@@ -23,6 +23,7 @@ void setup() {
 
     //  Serial for Debugging
     Serial.begin(115200);
+    while (!Serial);
 }
 
 void loop() {
