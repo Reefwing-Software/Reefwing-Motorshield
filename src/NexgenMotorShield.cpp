@@ -1,20 +1,21 @@
 /******************************************************************
-  @file    NexgenMotorShield.cpp
-  @brief   Arduino Library for the Nexgen Motor Shield
+  @file    ReefwingMotorShield.cpp
+  @brief   Arduino Library for the Reefwing Motor Shield
   @author  David Such
 
   Code:        David Such
-  Version:     2.0
-  Date:        08/12/21
+  Version:     3.0
+  Date:        14/12/22
 
   1.0 Original Release          27/07/21
   1.1 Updated Examples          10/08/21
   2.0 Added Nano 33 IoT support 08/12/21
+  3.0 Rebrand & New Repo        14/12/22
 
 ******************************************************************/
 
 #include "Arduino.h"
-#include "NexgenMotorShield.h"
+#include "ReefwingMotorShield.h"
 
 DCMotor::DCMotor(uint8_t channel) {
   _channel = channel;
@@ -110,7 +111,7 @@ DCMotor getMotor(uint8_t channel) {
   return DCMotor(channel);
 }
 
-NexgenMotorShield::NexgenMotorShield(void): motor1{ getMotor(1) }, motor2{ getMotor(2) } {
+ReefwingMotorShield::ReefwingMotorShield(void): motor1{ getMotor(1) }, motor2{ getMotor(2) } {
   //  Pin Configuration
   pinMode(VBAT, INPUT);
   if (BOARD_NAME  == NANO_33_IOT) pinMode(BUZZER, OUTPUT);
@@ -120,32 +121,32 @@ NexgenMotorShield::NexgenMotorShield(void): motor1{ getMotor(1) }, motor2{ getMo
   motor2.setConfiguration(DISCONNECT);
 }
 
-void NexgenMotorShield::setR1(uint16_t r1) {
+void ReefwingMotorShield::setR1(uint16_t r1) {
   _r1 = r1;
 }
 
-void NexgenMotorShield::setR2(uint16_t r2) {
+void ReefwingMotorShield::setR2(uint16_t r2) {
   _r2 = r2;
 }
 
-uint16_t NexgenMotorShield::getR1(void) {
+uint16_t ReefwingMotorShield::getR1(void) {
   return _r1;
 }
         
-uint16_t NexgenMotorShield::getR2(void) {
+uint16_t ReefwingMotorShield::getR2(void) {
   return _r2;
 }
 
-float NexgenMotorShield::readDividerRatio(void) {
+float ReefwingMotorShield::readDividerRatio(void) {
   return (float)(_r1 + _r2) / (float)_r2;
 }
 
-float NexgenMotorShield::readADCValue(void) {
+float ReefwingMotorShield::readADCValue(void) {
   //  ADC Hardware rounds down
   return (float)analogRead(VBAT) + 0.5;
 }
 
-float NexgenMotorShield::readBatteryVoltage(void) {
+float ReefwingMotorShield::readBatteryVoltage(void) {
   float adcValue = readADCValue(); 
 
   return (adcValue / 1024.0) * VLOGIC * readDividerRatio();

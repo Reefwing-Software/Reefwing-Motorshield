@@ -1,29 +1,20 @@
-# Nexgen Motor Shield Library #
+# Reefwing Motor Shield Library #
 
-The Nexgen Rover is an Arduino based robot designed wholly by Nexgen Codecamp Pty Ltd. It is used in technology related STEM courses aimed at high schools. The robot is based on Arduino technology and runs an Arduino UNO or Arduino Nano 33 IoT with a motor controller shield/carrier board.
+This library is designed to work with L2938 H-bridge based motor shields. In particular shields that target the Arduino UNO or Arduino Nano 33 IoT boards.
 
-The shield for the UNO and the carrier board for the Nano 33 IoT have a similar design but different headers to match the boards.
-
-This library makes using the Nexgen Motor Shield simple.
+Shields for the UNO and the carrier board for the Nano 33 IoT will have a similar design but different headers to match the boards.
 
 ### 1.0 Motor Shield Capabilities ###
 
-Both the Nexgen Motor Shield and Carrier Boards utilise the L293B H-bridge and have been designed with the following capabilities:
+Shields based on the L293B H-bridge and have been designed with the following capabilities:
 * Ability to control two bidirectional DC motors for direction and rotation speed.
-* An XT-60 connection for the LiPo battery to power the shield and attached Arduino board.
 * Reverse polarity protection for the battery connection.
 * LED power indication for VCC (i.e., LiPo voltage) and the 5V regulated supply. A separate 5VDC regulator is provided on the shield/carrier board. The 5VDC regulator on the UNO and Nano is not used. Note that the 5VDC regulator output on the Nano 33 IoT is normally not connected to the header pin (unless you bridge the pads on the board). The Nano carrier board also provides power indication for the 3V3 bus. This comes from the 3V3DC regulator on the Nano 33 IoT.
 * Voltage monitoring to prevent excessive discharge of the LiPo (needs to be programmed).
-* The UNO/Nano reset switch reproduced on the shield.
-* Bulk decoupling to reduce low frequency ripple and bypass capacitors to reduce high frequency noise.
-* Additional pin headers for GND, 5VDC and 3V3DC (on the Nano Carrier Board).
-* Two additional, Signal, 5V and GND headers for use with servo motors or similar.
 
 The L293B chip allows us to control two bidirectional motors with a stall current of up to 2A. It expects an RMS current of 1A. In the L293, motor direction is controlled by the state of two input pins and speed is controlled by applying a PWM signal to the enable pin. This library abstracts that detail away.
 
 To monitor the battery we use a simple voltage divider and the ADC (Analog to Digital Converter) on the Arduino boards. We need a resistive divider because you can't apply more than 5V to an Analog Input on the UNO or 3V3 to the Nano 33 IoT. You can read more about the details of battery monitoring in our article [Designing your own Arduino Motor Shield](https://medium.com/r/?url=https%3A%2F%2Freefwing.medium.com%2Fdesigning-your-own-arduino-uno-motor-shield-ca507ab61f4b).
-
-The Nano 33 IoT carrier board also comes with an on/off switch, which disconnects power from the LiPo battery and a passive piezo electric buzzer. 
 
 ### 2.0 Motor Shield Pin Connections ###
 
@@ -51,7 +42,7 @@ In addition, we have the following pins connected:
 * **D10**  -  Servo 2 (optional Servo Controls or general purpose digital output)
 * **A0** -  Voltage Divider output from battery
 
-In total the Nexgen UNO Motor Shield uses **8** Digital Inputs and **1** Analogue Input. The remaining pins are free and available via the stackable header. 
+In total the Reefwing UNO Motor Shield uses **8** Digital Inputs and **1** Analogue Input. The remaining pins are free and available via the stackable header. 
 
 Additional 5V DC and GND header pins are also provided for use with sensors, etc.
 
@@ -85,22 +76,22 @@ In addition, we have the following pins connected to headers:
 * **A4** - I2C SDA (not used by carrier board)
 * **A5** - I2C SCL (not used by carrier board)
 
-In total the Nexgen Nano 33 IoT carrier board uses **8** Digital Inputs and **2** Analogue Inputs. The remaining pins are free and available via the stackable header or additional board headers (e.g., the I2C and SPI bus pins). 
+In total the Reefwing Nano 33 IoT carrier board uses **8** Digital Inputs and **2** Analogue Inputs. The remaining pins are free and available via the stackable header or additional board headers (e.g., the I2C and SPI bus pins). 
 
 Additional 5V DC, 3V3 DC and GND header pins are also provided for use with sensors, etc.
 
 ### How to Use the Library ###
 
-The quickest way to learn how to use this library is to look at the examples. Assuming you have the Nexgen Motor Shield library in your Arduino libraries directory, you can access the library functionality by including the header file:
+The quickest way to learn how to use this library is to look at the examples. Assuming you have the Reefwing Motor Shield library in your Arduino libraries directory, you can access the library functionality by including the header file:
 
 ```
-#include <NexgenMotorShield.h>
+#include <ReefwingMotorShield.h>
 ```
 
 A motor shield object can be instantiated using the provided constructor:
 
 ```
-NexgenMotorShield motorShield;
+ReefwingMotorShield motorShield;
 ```
 
 You can then control the two motors using the **setConfiguration()** and **setSpeed** methods. For example, for motor 1:
@@ -141,8 +132,3 @@ motorShield.motor1.setConfiguration(BRAKE);
 ```
 
 Be aware that active braking can generate significant back EMF in the motor shield and it is better to use **COAST**. Setting the configuration to COAST and using motor disable() is equivalent.
-
-### Help and Questions ###
-
-* Contact [Nexgen Codecamp](https://nexgencodecamp.com.au/)
-* Other community or team contact

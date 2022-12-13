@@ -1,12 +1,12 @@
 #######################################
-# IDE Map for Nexgen Motor Shield
+# IDE Map for Reefwing Motor Shield
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-NexgenMotorShield	KEYWORD1
+ReefwingMotorShield	KEYWORD1
 DCMotor	KEYWORD1
 
 #######################################
