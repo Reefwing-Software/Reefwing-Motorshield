@@ -1,7 +1,8 @@
 /******************************************************************
-  @file    ReefwingMotorShield.h
-  @brief   Arduino Library for the Reefwing Motor Shield
-  @author  David Such
+  @file       ReefwingMotorShield.h
+  @brief      Arduino Library for the Reefwing Motor Shield
+  @author     David Such
+  @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     2.0

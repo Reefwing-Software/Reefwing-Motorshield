@@ -1,7 +1,8 @@
 /******************************************************************
-  @file    withoutLibrary.ino
-  @brief   Using the UNO Reefwing Motor Shield without the Library
-  @author  David Such
+  @file       withoutLibrary.ino
+  @brief      Using the UNO Reefwing Motor Shield without the Library
+  @author     David Such
+  @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     3.0

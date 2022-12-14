@@ -1,7 +1,8 @@
 /******************************************************************
-  @file    buzzer.ino
-  @brief   Test the piezo buzzer on the Reefwing Carrier Board
-  @author  David Such
+  @file       buzzer.ino
+  @brief      Test the piezo buzzer on the Reefwing Carrier Board
+  @author     David Such
+  @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     3.0

@@ -1,7 +1,8 @@
 /******************************************************************
-  @file    accelerate.ino
-  @brief   Accelerate DCMotor example for the Reefwing Motor Shield
-  @author  David Such
+  @file       accelerate.ino
+  @brief      Accelerate DCMotor example for the Reefwing Motor Shield
+  @author     David Such
+  @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
   Version:     3.0

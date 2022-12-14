@@ -1,3 +1,8 @@
+// Copyright (c) 2022 dsuch
+// 
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
 /******************************************************************
  *  Pin Mapping for Arduino UNO
  * 
