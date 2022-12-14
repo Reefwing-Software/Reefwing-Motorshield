@@ -5,13 +5,14 @@
   @copyright  Please see the accompanying LICENSE file.
 
   Code:        David Such
-  Version:     3.0
+  Version:     3.0.1
   Date:        14/12/22
 
-  1.0 Original Release          27/07/21
-  1.1 Updated Examples          10/08/21
-  2.0 Added Nano 33 IoT support 08/12/21
-  3.0 Rebrand & New Repo        14/12/22
+  1.0   Original Release          27/07/21
+  1.1   Updated Examples          10/08/21
+  2.0   Added Nano 33 IoT support 08/12/21
+  3.0   Rebrand & New Repo        14/12/22
+  3.0.1 Update Versioning & Licence 14/12/22
 
 ******************************************************************/
 
