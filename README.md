@@ -1,3 +1,5 @@
+![version](https://img.shields.io/github/v/tag/Reefwing-Software/Reefwing-Motorshield) ![license](https://img.shields.io/badge/license-MIT-green) ![release](https://img.shields.io/github/release-date/Reefwing-Software/Reefwing-Motorshield?color="red") ![open source](https://badgen.net/badge/open/source/blue?icon=github)
+
 # Reefwing Motor Shield Library #
 
 This library is designed to work with L2938 H-bridge based motor shields. In particular shields that target the Arduino UNO or Arduino Nano 33 IoT boards.
